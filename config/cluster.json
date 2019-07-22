@@ -1,13 +1,31 @@
 {
     "__default__":
     {
-        "account": "aSLURMSubmissionAccount",
-        "mem": "1G",
-        "time": "0:5:0"
-	},
+
+        "jobname": "{rule}.{wildcards}",
+
+        "nodes": 1,
+        "ppn": 1,
+        "pmem": "1000mb",
+
+        "walltime": "5:00",
+
+        "qos": "flux",
+        "account": "ACCOUNT",
+        "queue": "fluxod",
+
+        "email": "EMAIL",
+        "mailon": "bea",
+        "jobout": "oe",
+        "outdir": "code/log/"
+
+    },
+    
     "count_words":
     {
-        "time": "0:10:0",
-        "mem": "2G"
-    }
+        "ppn": 2,
+        "walltime": "10:00"
+    },
 }
+
+
