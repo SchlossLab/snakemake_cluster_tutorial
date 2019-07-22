@@ -1,0 +1,4 @@
+# Adding files to ignore
+.snakemake/**
+results/**
+code/__pycache__/**
