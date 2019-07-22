@@ -21,11 +21,16 @@ Because this tutorial is designed to work on a Linux-based computer cluster, ple
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
-3. Create an environment called `clusterTutorial` with the dependencies we need:
+3. Clone this repository and move into the main project folder:
+```
+git clone https://github.com/SchlossLab/snakemake_cluster_tutorial.git
+cd snakemake_cluster_tutorial
+```
+4. Create an environment called `clusterTutorial` with the dependencies we need:
 ```
 conda env create -f envs/clusterTutorial.yaml
 ```
-4. Activate the environment before running any code:
+5. Activate the environment before running any code:
 ```
 conda activate clusterTutorial
 ```
