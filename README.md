@@ -34,6 +34,6 @@ conda env create -f envs/clusterTutorial.yaml
 ```
 conda activate clusterTutorial
 ```
-6. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the [cluster profile configuration](config/pbs-torque/config.yaml).
+6. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the [cluster profile configuration](config/pbs-torque/config.yaml) and the [cluster submission script](code/clusterSnakemake.pbs).
 
 See the [`conda` documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html) for more information.
