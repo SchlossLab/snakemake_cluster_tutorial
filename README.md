@@ -8,7 +8,7 @@ The analysis parses a set of books to calculate various statistics. All of the r
 
 ## Dependencies
 
-All dependencies are listed in [`envs/main.yaml`](config/env.yaml). You can install them manually using your preferred package manager(s), or use [`conda`](https://docs.conda.io/projects/conda/en/latest/index.html).
+All dependencies are listed in [`envs/main.yaml`](envs/main.yaml). You can install them manually using your preferred package manager(s), or use [`conda`](https://docs.conda.io/projects/conda/en/latest/index.html).
 
 ### Conda
 
