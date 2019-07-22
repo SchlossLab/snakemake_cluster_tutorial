@@ -35,6 +35,7 @@
 ####  Join output and error; pass environment to job
 
 #PBS -j oe
+#PBS -o code/log/
 #PBS -V
 
 # Add a note here to say what software modules should be loaded.
