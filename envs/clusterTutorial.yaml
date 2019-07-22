@@ -1,0 +1,10 @@
+name: clusterTutorial
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.7.3
+  - snakemake-minimal
+  - matplotlib
+  - numpy
+  - graphviz
