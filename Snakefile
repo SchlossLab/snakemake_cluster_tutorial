@@ -17,14 +17,16 @@ localrules: all, clean, make_archive
 
 
 
-### Running the Workflow
+
+
+### Workflow ###
 
 rule all:
     input:
-        'zipf_analysis.tar.gz'
+        'results/zipf_analysis.tar.gz'
 
-# delete everything so we can re-run things
-# deletes a little extra for purposes of lesson prep
+# Delete everything so we can re-run things
+# Deletes a little extra for purposes of lesson prep
 rule clean:
     shell:  
         '''
@@ -33,57 +35,61 @@ rule clean:
         '''
 
 
-### 1. Calculating Book Statistics
 
-# count words in one of our "books"
+
+### 1. Generating Results ###
+
+# Count words in one of our "books"
 rule count_words:
     input:  
-        wc='wordcount.py',
-        book='books/{file}.txt'
+        script='code/wordcount.py',
+        book='books/{book}.txt'
     output:
-        'BOOKS/{file}.dat'
+        data='results/{book}.dat'
     threads: 4
-    log: 
-        'BOOKS/{file}.log'
     shell:
-        '''
-        echo "Running {input.wc} with {threads} cores on {input.book}." &> {log} &&
-            python {input.wc} {input.book} {output} &>> {log}
-        '''
+        'python {input.script} {input.book} {output.data}'
 
 
-# create a plot for each book
+# Create a plot for each book
 rule make_plot:
     input:
-        plotcount='plotcount.py',
-        book='BOOKS/{file}.dat'
+        script='code/plotcount.py',
+        book=rules.count_words.output.data
     output:
-        'plots/{file}.png'
-    resources:
-        gpu=1
-    shell: 'python {input.plotcount} {input.book} {output}'
+        plot='results/{book}.png'
+    shell:
+        'python {input.script} {input.book} {output.plot}'
 
 
-###
 
-# generate summary table
+# Generate summary table
 rule zipf_test:
     input:  
-        zipf='zipf_test.py',
-        books=expand('BOOKS/{book}.dat', book=BOOKS)
+        script='code/zipf_test.py',
+        book=expand(rules.count_words.output.data,
+            book=BOOKS)
     output:
-        'results.txt'
+        table='results/results.txt'
     shell:
-        'python {input.zipf} {input.books} > {output}'
+        'python {input.script} {input.book} > {output.table}'
 
-# create an archive with all of our results
+
+
+
+
+### 2. Archiving Results ###
+
+# Create an archive with all of our results
 rule make_archive:
     input:
-        expand('plots/{book}.png', book=BOOKS),
-        expand('BOOKS/{book}.dat', book=BOOKS),
-        'results.txt'
+        data=expand(rules.count_words.output.data,
+            book=BOOKS),
+        plot=expand(rules.make_plot.output.plot,
+            book=BOOKS),
+        table=rules.zipf_test.output.table
     output:
-        'zipf_analysis.tar.gz'
+        tar='results/zipf_analysis.tar.gz'
     shell:
-        'tar -czvf {output} {input}'
+        'tar -czvf {output.tar} {input}'
 
