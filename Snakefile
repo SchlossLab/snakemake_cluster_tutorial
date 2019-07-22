@@ -6,36 +6,40 @@
 ######################################################
 
 
-# # Setting the workflow config file
+# # Setting the workflow config file (if desired)
+# # NOTE: If using, comment out line 17 and change all calls
+# # for 'BOOKS' to config['BOOKS'] throughout Snakefile
 # configfile: "config/config.yaml"
 
-# Defining book names (data samples)
+# OR
+
+# Defining book names within workflow
 BOOKS = glob_wildcards('books/{book}.txt').book
 
-# Defining which rules to run locally (not on the cluster)
+# Defining which rules to run locally when submitted to cluster
+# (will not be ran as job submissions)
 localrules: all, clean, make_archive
 
 
 
+### Running the Workflow ###
 
-
-### Workflow ###
-
+# Run the entire workflow
 rule all:
     input:
         'results/zipf_analysis.tar.gz'
 
+
 # Delete everything so we can re-run things
-# Deletes a little extra for purposes of lesson prep
 rule clean:
     shell:  
         '''
-        rm -rf results BOOKS plots __pycache__
-        rm -f results.txt zipf_analysis.tar.gz *.out *.log *.pyc
+        rm -rf results/ __pycache__/
         '''
 
 
 
+### Workflow Rules ###
 
 ### 1. Generating Results ###
 
@@ -46,7 +50,6 @@ rule count_words:
         book='books/{book}.txt'
     output:
         data='results/{book}.dat'
-    threads: 4
     shell:
         'python {input.script} {input.book} {output.data}'
 
@@ -62,7 +65,6 @@ rule make_plot:
         'python {input.script} {input.book} {output.plot}'
 
 
-
 # Generate summary table
 rule zipf_test:
     input:  
@@ -73,8 +75,6 @@ rule zipf_test:
         table='results/results.txt'
     shell:
         'python {input.script} {input.book} > {output.table}'
-
-
 
 
 
@@ -92,4 +92,3 @@ rule make_archive:
         tar='results/zipf_analysis.tar.gz'
     shell:
         'tar -czvf {output.tar} {input}'
-
