@@ -20,6 +20,7 @@ Because this tutorial is designed to work on a Linux-based computer cluster, ple
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
+source ~/.bash_profile
 ```
 3. Clone this repository and move into the main project folder:
 ```
