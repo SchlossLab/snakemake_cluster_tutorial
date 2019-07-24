@@ -1,5 +1,5 @@
 cluster-config: "config/cluster.json"
 cluster: "qsub -N {cluster.jobname} -l nodes={cluster.nodes}:ppn={cluster.ppn},pmem={cluster.pmem},walltime={cluster.walltime},qos={cluster.qos} -A {cluster.account} -q {cluster.queue} -M {cluster.email} -m {cluster.mailon} -j {cluster.jobout} -o {cluster.outdir} -V "
-jobs: 5000
+jobs: 4999
 verbose: true
 notemp: true
