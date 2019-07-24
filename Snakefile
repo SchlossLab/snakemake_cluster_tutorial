@@ -7,9 +7,10 @@
 
 
 # # Setting the workflow config file (if desired)
-# # NOTE: If using, comment out line 17 and change all calls
-# # for 'BOOKS' to config['BOOKS'] throughout Snakefile
+# # NOTE: If using, uncomment lines 12 and 13 then
+# # comment out line 18
 # configfile: "config/config.yaml"
+# BOOKS = config['BOOKS']
 
 # OR
 
