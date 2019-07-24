@@ -62,7 +62,7 @@ conda activate clusterTutorial
 ```
 8. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the [cluster profile configuration](config/cluster.json) and the [cluster submission script](code/clusterSnakemake.pbs).
 
-9. Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory.
+9. Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory by running `snakemake clean`.
     - To run it locally on the login node:
     ```
     snakemake
