@@ -15,7 +15,8 @@ All dependencies are listed in [`envs/clusterTutorial.yaml`](envs/clusterTutoria
 If you don't already have `conda` installed, please [download Miniconda](https://docs.conda.io/en/latest/miniconda.html). Miniconda3 is a Python 3-based package manager and is essentially a stripped-down version of Anaconda so it should be much faster to install.
 
 Because this tutorial is designed to work on a Linux-based computer cluster, please follow the below instructions to set up the conda environment (if you already have an updated version of Miniconda installed, please skip to step 3):
-1. Login to your cluster environment and navigate to your home folder
+
+1. Login to your cluster environment and navigate to your home folder.
 2. Download & install Miniconda for 64-bit Linux systems. When it asks if it should initialize `conda`, say `yes`:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -42,7 +43,7 @@ nano ~/.bashrc
 # unset __conda_setup
 # # <<< conda initialize <<<
 ```
-4. Source your `.bash_profile` to make all of the changes take effect (this should also re-source your `~/.bashrc`):
+4. Source your `.bash_profile` to make all of the changes take effect and finish installing Miniconda (this should also re-source your `~/.bashrc`):
 ```
 source ~/.bash_profile
 ```
@@ -59,6 +60,6 @@ conda env create -f envs/clusterTutorial.yaml
 ```
 conda activate clusterTutorial
 ```
-8. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the [cluster profile configuration](config/pbs-torque/config.yaml) and the [cluster submission script](code/clusterSnakemake.pbs).
+8. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the [cluster profile configuration](config/cluster.json) and the [cluster submission script](code/clusterSnakemake.pbs).
 
 See the [`conda` documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html) for more information.
