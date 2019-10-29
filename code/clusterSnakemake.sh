@@ -10,10 +10,12 @@
 #SBATCH --job-name=clusterSnakemake
 
 # Resources
+# For MPI, increase ntasks-per-node
+# For multithreading, increase cpus-per-task
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=4000mb
+#SBATCH --mem-per-cpu=1000mb
 #SBATCH --time=45:00
 
 # Account
