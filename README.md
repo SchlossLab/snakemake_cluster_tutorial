@@ -59,9 +59,11 @@ nano ~/.bashrc
 source ~/.bash_profile
 ```
 
-<br /> 
+<br />
 
-**5.** Clone this repository and move into the main project folder:
+## Using Snakemake to Submit Jobs
+
+**1.** Clone this repository and move into the main project folder:
 ```
 git clone https://github.com/SchlossLab/snakemake_cluster_tutorial.git
 cd snakemake_cluster_tutorial
@@ -69,27 +71,27 @@ cd snakemake_cluster_tutorial
 
 <br /> 
 
-**6.** Create an environment called `clusterTutorial` with the dependencies we need:
+**2.** Create an environment called `clusterTutorial` with the dependencies we need:
 ```
 conda env create -f envs/clusterTutorial.yaml
 ```
 
 <br /> 
 
-**7.** Activate the environment before running any code:
+**3.** Activate the environment before running any code:
 ```
 conda activate clusterTutorial
 ```
 
 <br /> 
 
-**8.** Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the following files for whichever cluster you're using:
+**4.** Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the following files for whichever cluster you're using:
 * PBS: [cluster profile configuration](config/pbs-torque/cluster.json) and the [cluster submission script](code/clusterSnakemake.pbs)
 * Slurm: [cluster profile configuration](config/slurm/cluster.json) and the [cluster submission script](code/clusterSnakemake.sh)
 
 <br /> 
 
-**9.** Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory by running `snakemake clean`.
+**5.** Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory by running `snakemake clean`.
 * To run the entire workflow locally (without the cluster):
 ```
 snakemake
