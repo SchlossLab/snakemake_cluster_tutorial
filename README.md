@@ -16,6 +16,8 @@ If you don't already have `conda` installed, please [download Miniconda](https:/
 
 Because this tutorial is designed to work on a Linux-based computer cluster, please follow the below instructions to set up the conda environment (if you already have an updated version of Miniconda installed, please skip to step 3):
 
+<br /> 
+
 **1.** Login to your cluster environment and navigate to your home folder.
 
 <br /> 
@@ -117,4 +119,4 @@ sbatch code/clusterSnakemake.sh
 
 <br /> 
 
-See the [`conda` documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html) for more information.
+See the `conda` [documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/index.html) for more information.
