@@ -1,4 +1,4 @@
-cluster-config: "config/slurm/cluster.json"
+cluster-config: "config/slurm/cluster.yaml"
 cluster: "sbatch --job-name={cluster.jobname} --nodes={cluster.nodes} --ntasks-per-node={cluster.ntaskspernode} --cpus-per-task={cluster.cpuspertask} --mem={cluster.mem} --time={cluster.time} --account={cluster.account} --partition={cluster.partition} --mail-user={cluster.mailuser} --mail-type={cluster.mailtype} --output={cluster.output} --export=ALL "
 jobs: 99998
 verbose: true
