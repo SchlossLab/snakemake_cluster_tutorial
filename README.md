@@ -105,7 +105,7 @@ snakemake --profile config/pbs-torque/ --latency 20
 ```
 Or to run a job that manages the workflow for you instead
 ```
-sbatch code/clusterSnakemake.pbs
+qsub code/clusterSnakemake.pbs
 ```
 
 <br /> 
