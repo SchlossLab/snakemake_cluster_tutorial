@@ -16,11 +16,11 @@ If you don't already have `conda` installed, please [download Miniconda](https:/
 
 Because this tutorial is designed to work on a Linux-based computer cluster, please follow the below instructions to set up the conda environment (if you already have an updated version of Miniconda installed, please skip to step 3):
 
-1. Login to your cluster environment and navigate to your home folder.
+**1.** Login to your cluster environment and navigate to your home folder.
 
 <br /> 
 
-2. Download & install Miniconda for 64-bit Linux systems. When it asks if it should initialize `conda`, say `yes`:
+**2.** Download & install Miniconda for 64-bit Linux systems. When it asks if it should initialize `conda`, say `yes`:
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
@@ -28,7 +28,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 <br /> 
 
-3. Open your cluster `.bashrc` in a text editor and edit the initialization script added by Miniconda so it resembles the following. This will allow environments to be properly inherited when passing jobs to cluster nodes for execution:
+**3.** Open your cluster `.bashrc` in a text editor and edit the initialization script added by Miniconda so it resembles the following. This will allow environments to be properly inherited when passing jobs to cluster nodes for execution:
 ```
 nano ~/.bashrc
 ```
@@ -52,14 +52,14 @@ nano ~/.bashrc
 
 <br /> 
 
-4. Source your `.bash_profile` to make all of the changes take effect and finish installing Miniconda (this should also re-source your `~/.bashrc`):
+**4.** Source your `.bash_profile` to make all of the changes take effect and finish installing Miniconda (this should also re-source your `~/.bashrc`):
 ```
 source ~/.bash_profile
 ```
 
 <br /> 
 
-5. Clone this repository and move into the main project folder:
+**5.** Clone this repository and move into the main project folder:
 ```
 git clone https://github.com/SchlossLab/snakemake_cluster_tutorial.git
 cd snakemake_cluster_tutorial
@@ -67,27 +67,27 @@ cd snakemake_cluster_tutorial
 
 <br /> 
 
-6. Create an environment called `clusterTutorial` with the dependencies we need:
+**6.** Create an environment called `clusterTutorial` with the dependencies we need:
 ```
 conda env create -f envs/clusterTutorial.yaml
 ```
 
 <br /> 
 
-7. Activate the environment before running any code:
+**7.** Activate the environment before running any code:
 ```
 conda activate clusterTutorial
 ```
 
 <br /> 
 
-8. Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the following files for whichever cluster you're using:
+**8.** Before running any jobs on the cluster, don't forget to change the `ACCOUNT` and `EMAIL` fields in the following files for whichever cluster you're using:
 * PBS: [cluster profile configuration](config/pbs-torque/cluster.json) and the [cluster submission script](code/clusterSnakemake.pbs)
 * Slurm: [cluster profile configuration](config/slurm/cluster.json) and the [cluster submission script](code/clusterSnakemake.sh)
 
 <br /> 
 
-9. Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory by running `snakemake clean`.
+**9.** Run the Snakemake workflow. **Note**: If you wish to rerun the workflow after having it successfully complete, use the `--forcerun` or the `--forceall` flags or just delete the `results/` directory by running `snakemake clean`.
 * To run the entire workflow locally (without the cluster):
 ```
 snakemake
@@ -95,7 +95,7 @@ snakemake
 
 <br /> 
 
-* To run the rules as individual steps on a PBS cluster:
+* To run the rules as individual jobs on a PBS cluster:
 ```
 snakemake --profile config/pbs-torque/ --latency 20
 ```
@@ -106,7 +106,7 @@ sbatch code/clusterSnakemake.pbs
 
 <br /> 
 
-* To run the rules as individual steps on a Slurm cluster:
+* To run the rules as individual jobs on a Slurm cluster:
 ```
 snakemake --profile config/slurm/ --latency 20
 ```
