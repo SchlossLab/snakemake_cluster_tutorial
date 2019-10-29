@@ -3,7 +3,7 @@ __default__:
   nodes: 1
   ntaskspernode: 1
   cpuspertask: 1
-  mem: "1000mb"
+  mempercpu: "1000mb"
   time: "5:00"
   account: "ACCOUNT"
   partition: "standard"
@@ -13,5 +13,4 @@ __default__:
 
 count_words:
   cpuspertask: 2
-  mem: "2000mb"
   time: "10:00"
